@@ -49,10 +49,11 @@ Site Navigation
   transition:         opacity .4s ease-in-out;
   width: 200px;
   z-index: 99;
+  box-shadow: 0px 0px 20px fade(@black,80%);
 }
 
 .genesis-nav-menu .sub-menu a {
-  background-color: #fff;
+  background-color: fade(@white,100%);
   border: 1px solid #eee;
   border-top: none;
   font-size: 14px;
@@ -123,16 +124,15 @@ Site Navigation
 --------------------------------------------- */
 
 .nav-primary {
-  background-color: @white;
 }
 
 .nav-primary a:hover,
 .nav-primary .current-menu-item > a {
-  color: @orange;
+  color: @blue;
 }
 
 .nav-primary .sub-menu a:hover {
-  color: @orange;
+  color: @blue;
 }
 
 /* Secondary Navigation

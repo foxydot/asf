@@ -179,42 +179,6 @@ input[type="search"] {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* Float Clearing
---------------------------------------------- 
-
-.archive-pagination:before,
-.clearfix:before,
-.entry:before,
-.entry-pagination:before,
-.footer-widgets:before,
-.nav-primary:before,
-.nav-secondary:before,
-.site-container:before,
-.site-footer:before,
-.site-header:before,
-.site-inner:before,
-.wrap:before {
-  content: " ";
-  display: table;
-}
-
-.archive-pagination:after,
-.clearfix:after,
-.entry:after,
-.entry-pagination:after,
-.footer-widgets:after,
-.nav-primary:after,
-.nav-secondary:after,
-.site-container:after,
-.site-footer:after,
-.site-header:after,
-.site-inner:after,
-.wrap:after {
-  clear: both;
-  content: " ";
-  display: table;
-}
-*/
 /* Import Fonts
 ------------------------------------------------------------ */
 /* Font Stacks */
@@ -252,7 +216,7 @@ html {
   /* 10px browser default */
 }
 body {
-  background-color: #f5f5f5;
+  background: #08385e url('../img/worldmap.jpg') no-repeat top center;
   color: #666;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
@@ -775,11 +739,9 @@ img#wpstats {
 Site Header
 ---------------------------------------------------------------------------------------------------- */
 .site-header {
-  background-color: #ffffff;
-}
-.site-header .wrap {
-  padding: 40px 0;
-  padding: 4rem 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
+  padding-top: 40px;
 }
 /* Title Area
 --------------------------------------------- */
@@ -894,9 +856,10 @@ Site Navigation
   transition: opacity 0.4s ease-in-out;
   width: 200px;
   z-index: 99;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
 }
 .genesis-nav-menu .sub-menu a {
-  background-color: #fff;
+  background-color: #ffffff;
   border: 1px solid #eee;
   border-top: none;
   font-size: 14px;
@@ -952,15 +915,12 @@ Site Navigation
 }
 /* Primary Navigation
 --------------------------------------------- */
-.nav-primary {
-  background-color: #ffffff;
-}
 .nav-primary a:hover,
 .nav-primary .current-menu-item > a {
-  color: #ff9900;
+  color: #2b6d8d;
 }
 .nav-primary .sub-menu a:hover {
-  color: #ff9900;
+  color: #2b6d8d;
 }
 /* Secondary Navigation
 --------------------------------------------- */
@@ -973,8 +933,8 @@ Content Area
 /* Entries
 --------------------------------------------- */
 .entry {
-  background-color: #fff;
-  border-radius: 3px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.8);
   margin-bottom: 40px;
   margin-bottom: 4rem;
   padding: 40px 40px 24px;
@@ -982,10 +942,10 @@ Content Area
 }
 .entry-content a {
   border-bottom: 1px solid #ddd;
-  color: #f15123;
+  color: #2b6d8d;
 }
 .entry-content a:hover {
-  color: #333;
+  color: #999999;
 }
 .entry-content .attachment a,
 .entry-content .gallery a {
