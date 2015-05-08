@@ -315,6 +315,7 @@ if (!class_exists('MSDTeamDisplay')) {
                     </div>
                     <div class="info">
                         <div class="name">'.$team_member->post_title.'</div>
+                        <div class="order">'.$team_member->lastname.'</div>
                         <div class="jobtitle">'.$jobtitle_metabox->get_the_value('_team_position').'</div>
                         <div class="university">'.$jobtitle_metabox->get_the_value('_team_org').'</div>
                         <div class="email">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_email'),'email').'</div>
