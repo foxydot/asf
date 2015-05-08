@@ -36,7 +36,7 @@ if (!class_exists('MSDTeamDisplay')) {
             $posts = get_posts($args);
             $i = 0;
             foreach($posts AS $post){
-                $posts[$i]->lastname = get_post_meta($post->ID,'_team_member__team_member_last_name',TRUE);
+                $posts[$i]->lastname = get_post_meta($post->ID,'_msdlab__team_last_name',TRUE);
                 $i++;
             }
             usort($posts,array(&$this,'sort_by_lastname'));
@@ -53,7 +53,7 @@ if (!class_exists('MSDTeamDisplay')) {
             $posts = get_posts($args);
             $i = 0;
             foreach($posts AS $post){
-                $posts[$i]->lastname = get_post_meta($post->ID,'_team_member__team_last_name',TRUE);
+                $posts[$i]->lastname = get_post_meta($post->ID,'_msdlab__team_last_name',TRUE);
                 $i++;
             }
             usort($posts,array(&$this,'sort_by_lastname'));
@@ -315,7 +315,6 @@ if (!class_exists('MSDTeamDisplay')) {
                     </div>
                     <div class="info">
                         <div class="name">'.$team_member->post_title.'</div>
-                        <div class="order">'.$team_member->lastname.'</div>
                         <div class="jobtitle">'.$jobtitle_metabox->get_the_value('_team_position').'</div>
                         <div class="university">'.$jobtitle_metabox->get_the_value('_team_org').'</div>
                         <div class="email">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_email'),'email').'</div>
