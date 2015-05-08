@@ -22,6 +22,7 @@ if (!class_exists('MSDTeamDisplay')) {
             //Filters
             add_filter( 'genesis_attr_headshot', array(&$this,'msdlab_headshot_context_filter' ));
             add_shortcode('team_output',array(&$this,'msdlab_team'));
+            add_image_size('headshot', 150, 180, false);
         }
  
         function get_team_member_by_practice($practice_area) {
@@ -286,16 +287,15 @@ if (!class_exists('MSDTeamDisplay')) {
         }
         function msdlab_team($atts){
             global $post,$msd_custom,$contact_info_metabox,$jobtitle_metabox;
-            shortcode_atts( array(
+            $atts = shortcode_atts( array(
                 'committee' => FALSE,
             ), $atts );
             $msd_team_display = new MSDTeamDisplay;
-            $team = $msd_team_display->get_all_team_members();
-            $ret = '<div id="team-members"><div class="hex_row_odd">';
+            $team = $atts['committee']?$msd_team_display->get_team_member_by_practice($atts['committee']):$msd_team_display->get_all_team_members();
+            $ret = '<div id="team-members">';
             $row = $i = 1;
             foreach($team AS $team_member){
-                $headshot = get_the_post_thumbnail($team_member->ID,'headshot-md');
-                $headshot_url = msdlab_get_thumbnail_url($team_member->ID,'headshot-md');
+                $headshot = get_the_post_thumbnail($team_member->ID,'headshot');
                 $terms = wp_get_post_terms($team_member->ID,'practice_area');
                 $jobtitle_metabox->the_meta($team_member->ID);
                 $practice_areas = '';
@@ -309,37 +309,20 @@ if (!class_exists('MSDTeamDisplay')) {
                 $mini_bio = msdlab_excerpt($team_member->ID);
                 $team_contact_info = '';
                 $contact_info_metabox->the_meta($team_member->ID);
-                $teamstr = '<div class="center">
-    <div class="hexagon bkg">
-      <div class="hex1 bkg">
-        <div class="hex2 bkg">
-        </div>
-      </div>
-    </div>
-    <div class="hexagon fg">
-      <div class="hex1">
-        <div class="hex2" style="background: url('.$headshot_url.') center no-repeat">
-          <div class="desc">
-            <h2>'.$team_member->post_title.'</h2>
-            <p class="jobtitle">'.$jobtitle_metabox->get_the_value('jobtitle').'</p>
-            <p class="email">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_email'),'email').'</p>
-            <p class="phone">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_phone'),'phone').'</p>
-          </div>  
-        </div><!--/hex2--> 
-      </div><!--/hex1-->
-    </div><!--/hexagon--> 
-  </div><!--/center-->';
+                $teamstr = '<div class="team_member row">
+                    <div class="headshot pull-left">
+                        '.$headshot.'
+                    </div>
+                    <div class="info">
+                        <div class="name">'.$team_member->post_title.'</div>
+                        <div class="jobtitle">'.$jobtitle_metabox->get_the_value('_team_position').'</div>
+                        <div class="university">'.$jobtitle_metabox->get_the_value('_team_org').'</div>
+                        <div class="email">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_email'),'email').'</div>
+                    </div>
+                </div><!--/center-->';
                 $ret .= $teamstr;   
                 $i++;
-                $eo = $row%2==0?'even':'odd';
-                if(($eo=='even' && $i==7) || ($eo=='odd' && $i==6)){
-                    $eo = $row%2==0?'even':'odd';
-                    $ret .= '</div><div class="hex_row_'.$eo.'">';
-                    $i = 0;
-                    $row++;
-                } 
             }
-            $ret .= '</div>';
             $ret .= '</div>';
             return $ret;
         }

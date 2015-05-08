@@ -79,3 +79,14 @@ if(!function_exists('msd_str_fmt')){
         return $ret;
     }
 }
+
+if(!function_exists('msdlab_get_thumbnail_url')){
+function msdlab_get_thumbnail_url($post_id = null, $size = 'post-thumbnail'){
+    global $post;
+    if(!$post_id)
+        $post_id = $post->ID;
+    $featured_image = wp_get_attachment_image_src( get_post_thumbnail_id($post_id), $size );
+    $url = $featured_image[0];
+    return $url;
+}
+}

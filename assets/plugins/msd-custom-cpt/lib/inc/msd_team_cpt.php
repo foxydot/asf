@@ -31,6 +31,9 @@ if (!class_exists('MSDTeamCPT')) {
             //Filters
             //add_filter( 'pre_get_posts', array(&$this,'custom_query') );
             add_filter( 'enter_title_here', array(&$this,'change_default_title') );
+            if(class_exists('MSDTeamDisplay')){
+                $this->team_display_class = new MSDTeamDisplay();
+            }
         }
         
         public function register_tax_practice_areas() {
