@@ -69,7 +69,7 @@ class GitHubPluginUpdater {
  
                 if ( ! empty( $this->accessToken ) )
                 {
-                    $url = add_query_arg( array( "access_token" => $this->accessToken ), $url );
+                    $url = esc_url(add_query_arg( array( "access_token" => $this->accessToken ), $url ) );
                 }
  
                 // Get the results
@@ -112,7 +112,7 @@ class GitHubPluginUpdater {
  
                         if ( ! empty( $this->accessToken ) )
                         {
-                            $package = add_query_arg( array( "access_token" => $this->accessToken ), $package );
+                            $package = esc_url(add_query_arg( array( "access_token" => $this->accessToken ), $package ) );
                         }
  
                         // Plugin object
@@ -159,10 +159,10 @@ class GitHubPluginUpdater {
  
                 if ( !empty( $this->accessToken ) )
                 {
-                    $downloadLink = add_query_arg(
+                    $downloadLink = esc_url(add_query_arg(
                         array( "access_token" => $this->accessToken ),
                         $downloadLink
-                    );
+                    ) );
                 }
  
                 $response->download_link = $downloadLink;

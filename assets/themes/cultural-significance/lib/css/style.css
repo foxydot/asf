@@ -1,10 +1,10 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 /*
 HTML5 Reset
 ---------------------------------------------------------------------------------------------------- */
 /* Baseline Normalize
   normalize.css v2.1.2 | MIT License | git.io/normalize
 --------------------------------------------- */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700);
 article,
 aside,
 details,
@@ -179,6 +179,42 @@ input[type="search"] {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+/* Float Clearing
+--------------------------------------------- 
+
+.archive-pagination:before,
+.clearfix:before,
+.entry:before,
+.entry-pagination:before,
+.footer-widgets:before,
+.nav-primary:before,
+.nav-secondary:before,
+.site-container:before,
+.site-footer:before,
+.site-header:before,
+.site-inner:before,
+.wrap:before {
+  content: " ";
+  display: table;
+}
+
+.archive-pagination:after,
+.clearfix:after,
+.entry:after,
+.entry-pagination:after,
+.footer-widgets:after,
+.nav-primary:after,
+.nav-secondary:after,
+.site-container:after,
+.site-footer:after,
+.site-header:after,
+.site-inner:after,
+.wrap:after {
+  clear: both;
+  content: " ";
+  display: table;
+}
+*/
 /* Import Fonts
 ------------------------------------------------------------ */
 /* Font Stacks */
@@ -450,8 +486,6 @@ Structure and Layout
 }
 .site-inner {
   clear: both;
-  padding-top: 40px;
-  padding-top: 4rem;
 }
 /* Column Widths and Positions
 --------------------------------------------- */
@@ -613,13 +647,15 @@ img.alignright,
   font-size: 36px;
   font-size: 3.6rem;
   line-height: 1;
+  color: rgba(255, 255, 255, 0.008);
+  text-shadow: 0 0 20px #000000;
 }
 .entry-title a,
 .sidebar .widget-title a {
-  color: #333;
+  color: rgba(255, 255, 255, 0.008);
 }
 .entry-title a:hover {
-  color: #666;
+  color: rgba(255, 255, 255, 0.01);
 }
 .widget-title {
   font-size: 16px;
@@ -1203,6 +1239,10 @@ Site Footer
 }
 .site-footer p {
   margin-bottom: 0;
+}
+.banner h1 {
+  padding: 20px 50px;
+  margin: 0 auto;
 }
 /*
 Media Queries
