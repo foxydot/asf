@@ -70,8 +70,8 @@ function msdlab_search_form($form, $search_text, $button_text, $label){
 
 
 function msdlab_page_banner(){
-    if(is_front_page())
-        return;
+    //if(is_front_page())
+       // return;
     global $post;
     if(is_page()) {
         $featured_image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'page_banner' );
