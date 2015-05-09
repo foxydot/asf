@@ -1254,6 +1254,15 @@ Site Footer
 .team_member .info .name {
   font-weight: 700;
 }
+.team_member .info .digits span {
+  margin: 0 0.5em;
+}
+.team_member .info .social a {
+  display: inline-block;
+  height: 1em;
+  width: 1em;
+  margin: 0 0.5em;
+}
 /*
 Media Queries
 ---------------------------------------------------------------------------------------------------- */

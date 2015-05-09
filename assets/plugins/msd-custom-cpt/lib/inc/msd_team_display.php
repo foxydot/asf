@@ -309,6 +309,19 @@ if (!class_exists('MSDTeamDisplay')) {
                 $mini_bio = msdlab_excerpt($team_member->ID);
                 $team_contact_info = '';
                 $contact_info_metabox->the_meta($team_member->ID);
+                $jobtitle = $jobtitle_metabox->get_the_value('_team_position')?'<div class="jobtitle">'.$jobtitle_metabox->get_the_value('_team_position').'</div>':'';
+                $university = $jobtitle_metabox->get_the_value('_team_org')?'<div class="university">'.$jobtitle_metabox->get_the_value('_team_org').'</div>':'';
+                $email = $contact_info_metabox->get_the_value('_team_email')?'<div class="email">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_email'),'email').'</div>':'';
+                $phone = $contact_info_metabox->get_the_value('_team_phone')?'<span class="phone"><i class="fa fa-phone"></i>'.msd_str_fmt($contact_info_metabox->get_the_value('_team_phone'),'phone').'</span>':'';
+                $mobile = $contact_info_metabox->get_the_value('_team_mobile')?'<span class="mobile"><i class="fa fa-mobile"></i>'.msd_str_fmt($contact_info_metabox->get_the_value('_team_mobile'),'phone').'</span>':'';
+                $fax = $contact_info_metabox->get_the_value('_team_fax')?'<span class="fax"><i class="fa fa-fax"></i>'.msd_str_fmt($contact_info_metabox->get_the_value('_team_fax'),'phone').'</span>':'';
+                $linkedin = $contact_info_metabox->get_the_value('_team_linked_in')?'<a href="'.$contact_info_metabox->get_the_value('_team_linked_in').'" class="fa fa-linkedin"></a>':'';
+                $twitter = $contact_info_metabox->get_the_value('_team_twitter')?'<a href="http://twitter.com/'.$contact_info_metabox->get_the_value('_team_twitter').'" class="fa fa-twitter"></a>':'';
+                $facebook = $contact_info_metabox->get_the_value('_team_facebook')?'<a href="'.$contact_info_metabox->get_the_value('_team_facebook').'" class="fa fa-facebook"></a>':'';
+                
+                $digits = ($phone != '' || $mobile != '' || $fax != '')?'<div class="digits">'.$phone.$mobile.$fax.'</div>':'';
+                
+                $social = ($linkedin != '' || $twitter != '' || $faceboook != '')?'<div class="social">'.$linkedin.$twitter.$facebook.'</div>':'';
                 $editlink = current_user_can('edit_post', $team_member->ID)?'<a href="'.get_edit_post_link($team_member->ID).'">Edit</a>':'';
                 $teamstr = '<div class="team_member row">
                     <div class="headshot pull-left">
@@ -316,9 +329,8 @@ if (!class_exists('MSDTeamDisplay')) {
                     </div>
                     <div class="info">
                         <div class="name">'.$team_member->post_title.' '.$editlink.'</div>
-                        <div class="jobtitle">'.$jobtitle_metabox->get_the_value('_team_position').'</div>
-                        <div class="university">'.$jobtitle_metabox->get_the_value('_team_org').'</div>
-                        <div class="email">'.msd_str_fmt($contact_info_metabox->get_the_value('_team_email'),'email').'</div>
+                        '.$jobtitle.$university.$email.$phone.$mobile.$fax.$social.'
+                        
                     </div>
                 </div><!--/center-->';
                 $ret .= $teamstr;   
